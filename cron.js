@@ -23,7 +23,7 @@ module.exports = ({github, context}) => {
     if (conflicts.length == 0) {
       core.setOutput('value', 'There is no conflict pull requests😀');
     } else {
-      core.setOutput('value', 'conflict pull requests\n' + conflicts.join("\\n"));
+      core.setOutput('value', 'conflict pull requests\\n' + conflicts.join("\\n"));
     }
   })();
 };
