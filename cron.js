@@ -1,3 +1,5 @@
+const core = require('@actions/core');
+
 module.exports = ({github, context}) => {
   (async () => {
     // https://octokit.github.io/rest.js/v18#search-issues-and-pull-requests
@@ -17,10 +19,11 @@ module.exports = ({github, context}) => {
         conflicts.push(pull.html_url);
       }
     }
+    console.log(conflicts);
     if (conflicts.length == 0) {
-      github.setOutput('value', 'There is no conflict pull requests😀');
+      core.setOutput('value', 'There is no conflict pull requests😀');
     } else {
-      github.setOutput('value', 'conflict pull requests\n' + conflicts.join("\n"));
+      core.setOutput('value', 'conflict pull requests\n' + conflicts.join("\n"));
     }
   })();
 };
