@@ -18,9 +18,9 @@ module.exports = ({github, context}) => {
       }
     }
     if (conflicts.length == 0) {
-      core.setOutput('value', 'There is no conflict pull requests😀');
+      github.setOutput('value', 'There is no conflict pull requests😀');
     } else {
-      core.setOutput('value', 'conflict pull requests\n' + conflicts.join("\n"));
+      github.setOutput('value', 'conflict pull requests\n' + conflicts.join("\n"));
     }
   })();
 };
