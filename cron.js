@@ -9,9 +9,10 @@ module.exports = ({github, context}) => {
     for (const pull of pulls.data.items) {
       console.log(pull);
       console.log(pull.url);
-      const pull_req = await github.request(`GET ${pull.url}`)
+      const pull_req = await github.request(`GET ${pull.pull_request.url}`)
       console.log(pull_req.data);
       if (pull_req.data.mergeable === false) {
+        console.log(pull_req.data.mergeable);
         // TODO
       }
     }
