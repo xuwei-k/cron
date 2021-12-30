@@ -10,8 +10,14 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: actions/github-script@v5
+      id: conflict_pull_requests
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         script: |
           const script = require(`${process.env.GITHUB_WORKSPACE}/cron.js`)
           console.log(script({github, context}))
+    - uses: slackapi/slack-github-action@v1.16.0
+      with:
+        payload: "{\"text\":\"${{ steps.conflict_pull_requests.outputs.value }}\"}"
+    - env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
