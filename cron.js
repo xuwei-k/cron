@@ -6,7 +6,7 @@ module.exports = ({github, context}) => {
       per_page: 100
     });
     console.log(pulls);
-    for (const pull of pulls.data) {
+    for (const pull of pulls.data.items) {
       console.log(pull);
       const pull_req = await github.rest.pulls.get({
         owner: pull.repo.owner,
