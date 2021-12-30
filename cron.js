@@ -5,16 +5,18 @@ module.exports = ({github, context}) => {
       q: "is:open+is:pr+author:xuwei-k+archived:false",
       per_page: 100
     });
-    console.log(pulls);
+//    console.log(pulls);
+    const conflicts = [];
     for (const pull of pulls.data.items) {
-      console.log(pull);
+//      console.log(pull);
       console.log(pull.url);
       const pull_req = await github.request(`GET ${pull.pull_request.url}`)
-      console.log(pull_req.data);
+//      console.log(pull_req.data);
       if (pull_req.data.mergeable === false) {
         console.log(pull_req.data.mergeable);
-        // TODO
+        conflicts.push(pull.html_url);
       }
     }
+    return conflicts;
   })();
 };
