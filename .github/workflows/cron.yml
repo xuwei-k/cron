@@ -1,0 +1,17 @@
+on:
+  schedule:
+  - cron: '0 1 * * *'
+  push:
+  workflow_dispatch:
+jobs:
+  check-conflict:
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/github-script@v5
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        script: |
+          const script = require(`${process.env.GITHUB_WORKSPACE}/cron.js`)
+          console.log(script({github, context}))
