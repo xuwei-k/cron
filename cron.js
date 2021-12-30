@@ -1,4 +1,4 @@
-const core = require('@actions/core');
+const core = require(`${process.env.GITHUB_WORKSPACE}/node_modules/@actions/core`);
 
 module.exports = ({github, context}) => {
   (async () => {
