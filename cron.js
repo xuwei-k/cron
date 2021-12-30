@@ -8,11 +8,9 @@ module.exports = ({github, context}) => {
     console.log(pulls);
     for (const pull of pulls.data.items) {
       console.log(pull);
-      const pull_req = await github.rest.pulls.get({
-        owner: pull.repo.owner,
-        repo: pull.repo.repo,
-        pull_number: pull.number
-      });
+      console.log(pull.url);
+      const pull_req = await github.request(`GET ${pull.url}`)
+      console.log(pull_req.data);
       if (pull_req.data.mergeable === false) {
         // TODO
       }
