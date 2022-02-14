@@ -9,7 +9,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - run: npm install @actions/core
-    - uses: actions/github-script@v5
+    - uses: actions/github-script@v6
       id: conflict_pull_requests
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
