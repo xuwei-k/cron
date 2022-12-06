@@ -7,16 +7,16 @@ jobs:
     timeout-minutes: 4
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8 # v3.1.0
     - run: npm install @actions/core
-    - uses: actions/github-script@v6
+    - uses: actions/github-script@d556feaca394842dc55e4734bf3bb9f685482fa0 # v6.3.3
       id: conflict_pull_requests
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         script: |
           const script = require(`${process.env.GITHUB_WORKSPACE}/cron.js`)
           console.log(script({github, context}))
-    - uses: slackapi/slack-github-action@v1.23
+    - uses: slackapi/slack-github-action@007b2c3c751a190b6f0f040e47ed024deaa72844 # v1.23.0
       with:
         payload: "{\"text\":\"${{ steps.conflict_pull_requests.outputs.value }}\"}"
       env:
