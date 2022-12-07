@@ -10,5 +10,9 @@ jobs:
       with:
         status: ${{ job.status }}
         fields: repo,message,commit,author,action,eventName,ref,workflow,job,took,pullRequest
+        author_name: ${{ github.actor }}
+        text: ${{ github.actor }}
+        username: ${{ github.actor }}
+        icon_url: https://github.com/${{ github.actor }}.png
       env:
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
