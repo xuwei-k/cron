@@ -9,7 +9,6 @@ jobs:
     - uses: 8398a7/action-slack@v3
       with:
         status: ${{ job.status }}
-        fields: repo,message,commit,author,action,eventName,ref,workflow,job,took,pullRequest
         author_name: ${{ github.actor }}
         text: ${{ github.actor }}
         username: ${{ github.actor }}
