@@ -16,7 +16,7 @@ jobs:
         script: |
           const script = require(`${process.env.GITHUB_WORKSPACE}/cron.js`)
           console.log(script({github, context}))
-    - uses: slackapi/slack-github-action@007b2c3c751a190b6f0f040e47ed024deaa72844 # v1.23.0
+    - uses: slackapi/slack-github-action@e28cf165c92ffef168d23c5c9000cffc8a25e117 # v1.24.0
       with:
         payload: "{\"text\":\"${{ steps.conflict_pull_requests.outputs.value }}\"}"
       env:
