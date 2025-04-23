@@ -1,5 +1,7 @@
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '0 */4 * * *'
 jobs:
   check-conflict:
     timeout-minutes: 4
