@@ -16,7 +16,7 @@ jobs:
         script: |
           const script = require(`${process.env.GITHUB_WORKSPACE}/cron.js`)
           console.log(script({github, context}))
-    - uses: slackapi/slack-github-action@91efab103c0de0a537f72a35f6b8cda0ee76bf0a # v2.1.1
+    - uses: slackapi/slack-github-action@af78098f536edbc4de71162a307590698245be95 # v3.0.1
       with:
         payload: "{\"text\":\"${{ steps.conflict_pull_requests.outputs.value }}\"}"
         webhook-type: webhook-trigger
