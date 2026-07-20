@@ -20,5 +20,6 @@ jobs:
       with:
         payload: "{\"text\":\"${{ steps.conflict_pull_requests.outputs.value }}\"}"
         webhook-type: webhook-trigger
+        retries: "5"
       env:
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
